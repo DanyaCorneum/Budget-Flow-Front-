@@ -12,6 +12,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.10.1",
     "bootstrap-icons": "^1.13.1",
+    "classnames": "^2.5.1",
     "i18n": "^0.15.3",
     "lodash": "^4.17.21",
     "react": "^19.1.1",
