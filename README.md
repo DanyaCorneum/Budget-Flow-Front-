@@ -1,73 +1,51 @@
-# React + TypeScript + Vite
+# **Finance flow**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Finance flow - проект для помощи людям в управлении своими финансовыми потоками.
 
-Currently, two official plugins are available:
+*Дизайн*: https://www.figma.com/design/C8VH0De5EJ89gJ9319mHTU/z-t-fk-vtyz-cjcfkb?node-id=0-1&t=A42jutJy6odeANnl-1
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+*Цели и задачи*:
 
-## React Compiler
+Разработать комплексную систему для управления личными финансами, предоставляющую пользователям:
+- Автоматическое распределение доходов по категориям
+- Интеллектуальную классификацию транзакций
+- Контроль расходов с системой предупреждений
+- Инструменты для достижения финансовых целей
+- Аналитику и отчетность в реальном времени
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Данный репозиторий представляет из себя фронтенд часть приложения:
 
-## Expanding the ESLint configuration
+**Технологический стек**:
+- Фреймворк: React 18
+- Язык: TypeScript 4.9
+- State management: Redux Toolkit
+- Препроцессор SCSS
+- Маршрутизация: React Router v6
+- HTTP клиент: Axios
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+# Информация для девопса 
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1. Подготовка к деплою
+   Сборка проекта
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Перед деплоем обязательно соберите проект:
+bash
 ```
+# Production сборка
+npm run build
+# или
+yarn build
+# или
+pnpm build
+```
+Эта команда создаст папку dist/ с оптимизированными файлами.
+Проверка сборки локально
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Перед деплоем проверьте сборку локально:
+bash
+```
+# Предпросмотр production сборки
+npm run preview
+# или
+npx vite preview
 ```
