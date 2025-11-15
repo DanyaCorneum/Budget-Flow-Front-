@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Tinkof Sans";
+  src: url("../../../public/fonts/TinkoffSans-Regular.woff") format("woff");
+}
+
 *,
 *::before,
 *::after {
@@ -6,7 +11,7 @@
 
 body {
   margin: 0;
-  font-family: "Roboto Light", sans-serif;
+  font-family: "Tinkof Sans", sans-serif;
 }
 
 button {
