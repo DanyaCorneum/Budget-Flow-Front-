@@ -1,0 +1,13 @@
+@use "../../styles/variables" as variables;
+
+.input{
+  background: variables.$secondary-color;
+  padding: 18px;
+  border: 2px solid transparent;
+  border-radius: variables.$border-radius;
+  outline: none;
+  transition:  border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  &:focus, &:active {
+    border-color: variables.$text-color-main;
+  }
+}
