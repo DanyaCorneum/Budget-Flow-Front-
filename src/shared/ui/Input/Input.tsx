@@ -6,7 +6,6 @@ import crossExit from "../../../assets/cross-exit.svg"
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
     function Input({className = "", isValid = true, placeholder = "Placeholder", handleData, ...props}, ref) {
-        // Генерируем уникальный id для связи input и label
         const inputId = props.id || `input-${Math.random().toString(36).substr(2, 9)}`;
         const [isData, setIsData] = useState("")
         const inputRef = useRef<HTMLInputElement | null>(null)
@@ -24,7 +23,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         const handleInputData = (e: React.ChangeEvent<HTMLInputElement>) => {
 
             if (handleData) {
-                if (handleData(e)){
+                if (handleData(e) || e.target.value.length == 0){
                     setIsData(e.target.value)
                     if (isData === "") {
                         e.target.value = ""
