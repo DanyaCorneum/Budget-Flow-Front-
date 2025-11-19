@@ -1,17 +1,32 @@
 import {createBrowserRouter} from "react-router-dom";
-import {Login} from "../../../pages";
-import App from "../../App.tsx";
+import {NavigationBar} from "../../../widgets";
+import {About, Home, Login, Other} from "../../../pages";
 
 
 export const router = createBrowserRouter(
     [
         {
             path: '/',
-            element: <App/>,
+            element: <NavigationBar/>,
+            children: [
+                {
+                    path: "/home",
+                    element: <Home/>
+                },
+                {
+                    path:"/other",
+                    element: <Other/>
+                },
+                {
+                    path: "/login",
+                    element: <Login/>
+                },
+                {
+                    path: "/about",
+                    element: <About/>
+                }
+            ],
+            errorElement: <>404 error</>
         },
-        {
-            path: "/login",
-            element: <Login/>
-        }
     ]
 );
