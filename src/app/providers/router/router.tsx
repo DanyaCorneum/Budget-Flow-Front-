@@ -1,6 +1,6 @@
 import {createBrowserRouter} from "react-router-dom";
 import {NavigationBar} from "../../../widgets";
-import {About, Home, Login, Other} from "../../../pages";
+import {About, Home, Login, Other, SignIn} from "../../../pages";
 
 
 export const router = createBrowserRouter(
@@ -28,5 +28,9 @@ export const router = createBrowserRouter(
             ],
             errorElement: <>404 error</>
         },
+        {
+            path: "/sign-in",
+            element: <SignIn/>
+        }
     ]
 );
