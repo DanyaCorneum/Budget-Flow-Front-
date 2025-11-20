@@ -1,27 +1,73 @@
 @use "../../shared/styles/variables" as variables;
 
 
-.sign-in{
+.sign-in {
   display: flex;
   justify-content: space-between;
   background-color: variables.$secondary-color;
-  padding: 30px;
+  height: 100hv;
+  padding: 30px 30px 125px;
   gap: 10rem;
+  @media screen and (max-width: 1050px) {
+
+    gap: 5px;
+    padding: 10px 10px 220px;
+
+  }
+  @media screen and (max-width: 800px) {
+    justify-content: center;
+    gap: 5px;
+    padding: 10px 10px 245px;
+  }
+
+  @media screen and (max-width: 690px) {
+    flex-direction: column;
+    padding-bottom: 170px;
+    gap: 100px;
+    .go-to-main {
+      display: none;
+    }
+  }
+
   img {
     max-height: 50px;
   }
-  .sign-in-window{
+
+
+  .sign-in-window {
     margin: 13.5% 64px;
     background-color: variables.$main-color;
     text-align: center;
     padding: 60px;
+    min-width: 400px;
     border-radius: variables.$border-radius;
-    .sign-in-form{
+    @media screen and (max-width: 1050px) {
+      padding: 20px;
+      min-width: 500px;
+
+    }
+    @media screen and (max-width: 780px) {
+      margin-left: 0;
+      margin-right: 0;
+    }
+    @media screen and (max-width: 525px) {
+      min-width: 100px;
+    }
+
+    .sign-in-form {
       display: flex;
       justify-content: center;
       gap: 9px;
       @media screen and (max-width: 1050px) {
         flex-direction: column;
+      }
+
+      .input-number {
+        label {
+          @media screen and (max-width: 800px) {
+            font-size: 15px;
+          }
+        }
       }
     }
   }

@@ -5,11 +5,14 @@ import styles from "./Exit.module.scss"
 import {useNavigate} from "react-router-dom";
 
 
+export interface ExitProps {
+    className: string
+}
 
-function Exit(){
+function Exit({className}: ExitProps){
     const navigate = useNavigate()
 
-    return <Button className={cn(styles['exit'])} onClick={() => navigate("/")}><img src={crossExit} alt={"cross"}/></Button>
+    return <Button className={cn(styles['exit'], className)} onClick={() => navigate("/")}><img src={crossExit} alt={"cross"}/></Button>
 }
 
 export default Exit;
