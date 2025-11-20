@@ -1,6 +1,11 @@
 @use "../../shared/styles/variables" as variables;
 
 
+.hide {
+  display: none;
+  opacity: 0;
+}
+
 .sign-in {
   display: flex;
   justify-content: space-between;

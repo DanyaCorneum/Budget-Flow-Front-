@@ -5,14 +5,26 @@ import {Button, Input} from "../../shared";
 import {handleNumbers} from "../../shared/lib/index..ts";
 import {Exit} from "../../widgets";
 import {useNavigate} from "react-router-dom";
+import {useRef, useState} from "react";
 
 
 function SignIn() {
+    const [showInput, setShowInput] = useState<boolean>(true)
     const navigate = useNavigate()
+    const inputNumber =  useRef<HTMLInputElement>(null)
+    const inputPassword =  useRef<HTMLInputElement>(null)
 
     const watchForm = (e) => {
         e.preventDefault()
     }
+    const sendInfo = () => {
+        setShowInput(false)
+        if (!showInput){
+            navigate("/")
+        }
+
+    }
+
     return (
         <div className={cn(styles["sign-in"])}>
             <img src={Tbank} alt={"tbank"}></img>
@@ -20,9 +32,23 @@ function SignIn() {
             <div className={cn(styles["sign-in-window"])}>
                 <h2 className={cn(styles["title"])}>Sign In to Budget Flow</h2>
                 <form onSubmit={watchForm} className={cn(styles["sign-in-form"])}>
-                    <Input className={cn(styles["input-number"])} placeholder={"Number"} isValid={true}
+                    <Input ref={inputNumber}
+                           className={cn(styles["input-number"],
+                               {
+                                   [styles.hide] : !showInput
+                               }
+                               )}
+                           placeholder={"Number"} isValid={true}
                            handleData={handleNumbers}/>
-                    <Button className={cn(styles["sign-in-button"])} onClick={() => navigate("/")}>sign in</Button>
+                    <Input ref={inputPassword} style={{display: `${showInput ? "none" : "block"}`}}
+                           className={cn(styles["input-password"],
+                               {
+                                   [styles.hide] : showInput
+                               }
+                           )}
+                           placeholder={"Password"} isValid={true}
+                           handleData={handleNumbers}/>
+                    <Button className={cn(styles["sign-in-button"])} onClick={sendInfo}>sign in</Button>
                 </form>
             </div>
             <Exit className={cn(styles["go-to-main"])}/>
