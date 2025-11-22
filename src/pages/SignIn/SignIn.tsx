@@ -11,15 +11,15 @@ import {useRef, useState} from "react";
 function SignIn() {
     const [showInput, setShowInput] = useState<boolean>(true)
     const navigate = useNavigate()
-    const inputNumber =  useRef<HTMLInputElement>(null)
-    const inputPassword =  useRef<HTMLInputElement>(null)
+    const inputNumber = useRef<HTMLInputElement>(null)
+    const inputPassword = useRef<HTMLInputElement>(null)
 
     const watchForm = (e) => {
         e.preventDefault()
     }
     const sendInfo = () => {
         setShowInput(false)
-        if (!showInput){
+        if (!showInput) {
             navigate("/")
         }
 
@@ -27,7 +27,11 @@ function SignIn() {
 
     return (
         <div className={cn(styles["sign-in"])}>
-            <img src={Tbank} alt={"tbank"}></img>
+            <div className={cn(styles["header"])}>
+
+                <img src={Tbank} alt={"tbank"}></img>
+                <Exit className={cn(styles["go-to-main"])}/>
+            </div>
 
             <div className={cn(styles["sign-in-window"])}>
                 <h2 className={cn(styles["title"])}>Sign In to Budget Flow</h2>
@@ -35,15 +39,15 @@ function SignIn() {
                     <Input ref={inputNumber}
                            className={cn(styles["input-number"],
                                {
-                                   [styles.hide] : !showInput
+                                   [styles.hide]: !showInput
                                }
-                               )}
+                           )}
                            placeholder={"Number"} isValid={true}
                            handleData={handleNumbers}/>
                     <Input ref={inputPassword} style={{display: `${showInput ? "none" : "block"}`}}
                            className={cn(styles["input-password"],
                                {
-                                   [styles.hide] : showInput
+                                   [styles.hide]: showInput
                                }
                            )}
                            placeholder={"Password"} isValid={true}
@@ -51,7 +55,6 @@ function SignIn() {
                     <Button className={cn(styles["sign-in-button"])} onClick={sendInfo}>sign in</Button>
                 </form>
             </div>
-            <Exit className={cn(styles["go-to-main"])}/>
         </div>
     )
 }

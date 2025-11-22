@@ -7,31 +7,18 @@
 }
 
 .sign-in {
-  display: flex;
-  justify-content: space-between;
   background-color: variables.$secondary-color;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 100hv;
-  padding: 30px 30px 125px;
+  padding: 30px 30px 170px;
   gap: 10rem;
-  @media screen and (max-width: 1050px) {
-
-    gap: 5px;
-    padding: 10px 10px 220px;
-
-  }
-  @media screen and (max-width: 800px) {
-    justify-content: center;
-    gap: 5px;
-    padding: 10px 10px 245px;
-  }
-
-  @media screen and (max-width: 690px) {
-    flex-direction: column;
-    padding-bottom: 170px;
-    gap: 100px;
-    .go-to-main {
-      display: none;
-    }
+  .header{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
   }
 
   img {
@@ -40,10 +27,10 @@
 
 
   .sign-in-window {
-    margin: 13.5% 64px;
     background-color: variables.$main-color;
     text-align: center;
     padding: 60px;
+    max-width: 600px;
     min-width: 400px;
     border-radius: variables.$border-radius;
     @media screen and (max-width: 1050px) {
