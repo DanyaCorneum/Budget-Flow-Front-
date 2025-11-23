@@ -1,7 +1,11 @@
 import {createBrowserRouter} from "react-router-dom";
 import {NavigationBar} from "../../../widgets";
-import {About, Home, Login, Other, SignIn} from "../../../pages";
+import {About, Home, Login, Other} from "../../../pages";
+import {lazy, Suspense} from "react";
+import {Loading} from "../../../shared";
+import Error from "../../../pages/Error/Error.tsx";
 
+const SignIn = lazy(() => import('../../../pages/SignIn/SignIn'))
 
 export const router = createBrowserRouter(
     [
@@ -14,7 +18,7 @@ export const router = createBrowserRouter(
                     element: <Home/>
                 },
                 {
-                    path:"/other",
+                    path: "/other",
                     element: <Other/>
                 },
                 {
@@ -26,11 +30,11 @@ export const router = createBrowserRouter(
                     element: <About/>
                 }
             ],
-            errorElement: <>404 error</>
+            errorElement: <Error/>
         },
         {
             path: "/sign-in",
-            element: <SignIn/>
+            element: <Suspense fallback={<Loading/>}><SignIn/></Suspense>
         }
     ]
 );
