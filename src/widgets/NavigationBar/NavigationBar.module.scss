@@ -1,0 +1,46 @@
+@use "../../shared/styles/variables" as variables;
+@use "sass:color";
+
+.nav-bar{
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 170px ;
+  border-bottom: 2px solid variables.$secondary-color;
+  letter-spacing: 1px;
+  font-size: 18px;
+  img {
+   width: 50px;
+    height: 50px;
+  }
+  .main,
+  .sign-in {
+    display: flex;
+    justify-content: center;
+    gap: 72px;
+    .nav-link{
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: variables.$text-color-secondary;
+      transition: 200ms ease;
+      font-weight: 700;
+      &:hover{
+        color: color.adjust(variables.$secondary-color, $blackness: 170%);
+      }
+    }
+    }
+    .sign-in{
+      .nav-link{
+        color: variables.$selected-color;
+        font-weight: 400;
+        padding: 10px;
+        border-radius: variables.$border-radius;
+        &:hover{
+          background-color: variables.$secondary-color;
+          color: variables.$selected-color;
+
+        }
+      }
+  }
+}

@@ -1,4 +1,5 @@
 import {default as Tbank} from "../../assets/tbank.svg"
+import {default as Arrow} from "../../assets/arrow.svg"
 import styles from "./SignIn.module.scss"
 import cn from "classnames"
 import {Button, Input} from "../../shared";
@@ -52,7 +53,7 @@ function SignIn() {
                            )}
                            placeholder={"Password"} isValid={true}
                            handleData={handleNumbers}/>
-                    <Button className={cn(styles["sign-in-button"])} onClick={sendInfo}>sign in</Button>
+                    <Button className={cn(styles["sign-in-button"])} onClick={sendInfo}><img src={Arrow} alt={"Sign in"}/></Button>
                 </form>
             </div>
         </div>
