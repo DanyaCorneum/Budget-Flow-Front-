@@ -1,13 +1,14 @@
-import {default as Tbank} from "../../assets/tbank.svg"
 import styles from "./Home.module.scss"
+import {Footer} from "../../widgets";
+import BankMiniCard from "../../widgets/BankMiniCard/BankMiniCard.tsx";
+import {PlansCard} from "../../widgets";
 
-import {Loading} from "../../shared";
-
-function Home(){
+function Home() {
     return <div className={styles["home"]}>
-        <img src={Tbank} alt={"tbank"}></img>
-        <Loading/>
+        <BankMiniCard/>
+        <PlansCard/>
+        <Footer/>
     </div>
 }
 
-export default  Home;
+export default Home;

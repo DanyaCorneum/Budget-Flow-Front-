@@ -5,7 +5,7 @@ import styles from "./Input.module.scss"
 import crossExit from "../../../assets/cross-exit.svg"
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-    function Input({className = "", isValid = true, placeholder = "Placeholder", handleData, ...props}, ref) {
+    function Input({className = "", isValid = true, type="text",  placeholder = "Placeholder", handleData, ...props}, ref) {
         const inputId = props.id || `input-${Math.random().toString(36).substr(2, 9)}`;
         const [isData, setIsData] = useState("")
         const inputRef = useRef<HTMLInputElement | null>(null)
@@ -41,6 +41,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         return (
             <div className={cn(styles["input-group"], className)}>
                 <input
+                    type={type}
+
                     id={inputId}
                     placeholder={placeholder}
                     ref={setRefs}

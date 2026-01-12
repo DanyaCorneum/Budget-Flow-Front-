@@ -3,10 +3,10 @@ import {default as Arrow} from "../../assets/arrow.svg"
 import styles from "./SignIn.module.scss"
 import cn from "classnames"
 import {Button, Input} from "../../shared";
-import {handleNumbers} from "../../shared/lib/index..ts";
+import {handleNumbers} from "../../shared/lib";
 import {Exit} from "../../widgets";
 import {useNavigate} from "react-router-dom";
-import {useRef, useState} from "react";
+import {type FormEvent, useRef, useState} from "react";
 
 
 function SignIn() {
@@ -15,7 +15,7 @@ function SignIn() {
     const inputNumber = useRef<HTMLInputElement>(null)
     const inputPassword = useRef<HTMLInputElement>(null)
 
-    const watchForm = (e) => {
+    const watchForm = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
     }
     const sendInfo = () => {
@@ -44,7 +44,8 @@ function SignIn() {
                                }
                            )}
                            placeholder={"Number"} isValid={true}
-                           handleData={handleNumbers}/>
+                           handleData={handleNumbers}
+                           type={"phone"}/>
                     <Input ref={inputPassword} style={{display: `${showInput ? "none" : "block"}`}}
                            className={cn(styles["input-password"],
                                {
@@ -53,7 +54,8 @@ function SignIn() {
                            )}
                            placeholder={"Password"} isValid={true}
                            handleData={handleNumbers}/>
-                    <Button className={cn(styles["sign-in-button"])} onClick={sendInfo}><img src={Arrow} alt={"Sign in"}/></Button>
+                    <Button className={cn(styles["sign-in-button"])} onClick={sendInfo}>{window.outerWidth > 800 ?
+                        <img src={Arrow} alt={"Sign in"}/> : "Next"}</Button>
                 </form>
             </div>
         </div>

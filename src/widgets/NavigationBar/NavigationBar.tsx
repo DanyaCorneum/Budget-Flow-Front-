@@ -13,7 +13,7 @@ function NavigationBar() {
             <div className={cn(styles["nav-bar"])}>
                 <div className={cn(styles["main"])}>
                     <img src={Tbank} alt={"tbank"}></img>
-                    <Link className={cn(styles["nav-link"])} to={"/home"}>Главная</Link>
+                    <Link className={cn(styles["nav-link"])} to={"/"}>Главная</Link>
                     <Link className={cn(styles["nav-link"])} to={"/about"}>История</Link>
                     <Link className={cn(styles["nav-link"])} to={"/other"}>Бонусы</Link>
                 </div>

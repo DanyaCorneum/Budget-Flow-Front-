@@ -5,4 +5,5 @@ export interface InputProps extends HTMLAttributes<HTMLInputElement> {
     className?: string;
     placeholder?: string;
     handleData?: (event: React.ChangeEvent<HTMLInputElement>) => boolean;
+    type?: string
 }

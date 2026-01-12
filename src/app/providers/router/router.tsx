@@ -14,7 +14,7 @@ export const router = createBrowserRouter(
             element: <NavigationBar/>,
             children: [
                 {
-                    path: "/home",
+                    path: "/",
                     element: <Home/>
                 },
                 {
