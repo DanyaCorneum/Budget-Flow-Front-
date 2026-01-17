@@ -1,0 +1,32 @@
+.plans-card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 100px;
+  max-height: 200px;
+  padding: 15px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border-radius: 5px;
+  overflow: visible;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+
+
+}
+.plans-card__container{
+  width: 98%;
+  p {
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .progress-bar {
+    margin-top: 10px;
+    width: 100%;
+    height: 12px;
+    border-radius: 10px; // Скругление углов, а не овал
+    background-color: black;
+    display: block;
+  }
+}
