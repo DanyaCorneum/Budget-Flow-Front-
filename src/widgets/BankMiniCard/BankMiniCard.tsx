@@ -4,7 +4,7 @@ import type {BankMiniCardProps} from "./BankMiniCard.props.ts";
 function BankMiniCard({image = "/src/assets/image card placeholder.svg", loadData = () => "0000", ...props}: BankMiniCardProps) {
     const amount = loadData()
     return (
-        <Card image={image} {...props}>
+        <Card image={image} hasImage={true} {...props}>
             <div style={{"display": "flex", "alignItems": "center", "gap": "5px"}}>
                 <div style={{
                     "width": "5px",

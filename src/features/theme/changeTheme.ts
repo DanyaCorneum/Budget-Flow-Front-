@@ -1,1 +1,3 @@
-export const changeTheme = () => {}
+const changeTheme = () => {}
+
+export default changeTheme;

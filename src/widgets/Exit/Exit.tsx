@@ -12,7 +12,7 @@ export interface ExitProps {
 function Exit({className}: ExitProps){
     const navigate = useNavigate()
 
-    return <Button className={cn(styles['exit'], className)} onClick={() => navigate("/home")}><img src={crossExit} alt={"cross"}/></Button>
+    return <Button className={cn(styles['exit'], className)} onClick={() => navigate("/")}><img src={crossExit} alt={"cross"}/></Button>
 }
 
 export default Exit;
