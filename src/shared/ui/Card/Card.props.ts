@@ -6,4 +6,5 @@ export interface CardProps extends HTMLAttributes<HTMLDivElement>{
     text?: string;
     children?: ReactNode;
     hasImage?: boolean;
+    className?: string;
 }
