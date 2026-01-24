@@ -1,18 +1,26 @@
-import {forwardRef, useRef, useState} from "react";
+import {forwardRef, useRef} from "react";
 import type {InputProps} from "./Input.props.ts";
 import cn from "classnames";
 import styles from "./Input.module.scss"
-import crossExit from "../../../assets/cross-exit.svg"
+import ClearIcon from "../icons/CrosExit.tsx";
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-    function Input({className = "", isValid = true, type="text",  placeholder = "Placeholder", handleData, ...props}, ref) {
-        const inputId = props.id || `input-${Math.random().toString(36).substr(2, 9)}`;
-        const [isData, setIsData] = useState("")
+    function Input({
+                       className = "",
+                       isValid = true,
+                       type = "text",
+                       placeholder = "Placeholder",
+                       clearable = false,
+                       onChange,
+                       onClear,
+                       value = "",
+                       ...props
+                   }, ref) {
+        const inputId = props.id || `input-${Math.random().toString(36).slice(2, 11)}`;
         const inputRef = useRef<HTMLInputElement | null>(null)
 
         const setRefs = (element: HTMLInputElement) => {
             inputRef.current = element;
-
             if (typeof ref === 'function') {
                 ref(element);
             } else if (ref) {
@@ -20,48 +28,38 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             }
         }
 
-        const handleInputData = (e: React.ChangeEvent<HTMLInputElement>) => {
-
-            if (handleData) {
-                if (handleData(e) || e.target.value.length == 0){
-                    setIsData(e.target.value)
-                    if (isData === "") {
-                        e.target.value = ""
-                    }
-                }
-            }
-
-        }
-
-        const resetData = () => {
-            setIsData("")
-            inputRef.current?.focus()
+        const handleClear = (e: React.MouseEvent) => {
+            e.preventDefault();
+            onClear?.();
         }
 
         return (
             <div className={cn(styles["input-group"], className)}>
                 <input
                     type={type}
-
                     id={inputId}
                     placeholder={placeholder}
                     ref={setRefs}
-                    onChange={handleInputData}
                     {...props}
                     className={cn(styles["input"], {
                         [styles["invalid"]]: !isValid
                     })}
-                    value={isData}
+                    value={value}
+                    onChange={onChange}
                 />
                 <label htmlFor={inputId} className={styles["input-label"]}>
                     {placeholder}
                 </label>
-                <button
-                    onClick={resetData}
-                    className={cn(styles["reset-button"], {
-                        [styles["hide"]]: !(isData !== "")
-                    })}
-                ><img src={crossExit} alt={"exit"}/></button>
+                {clearable && value && (
+                    <button
+                        onClick={handleClear}
+                        className={styles["reset-button"]}
+                        type="button"
+                        aria-label="Очистить поле"
+                    >
+                        <ClearIcon/>
+                    </button>
+                )}
             </div>
         )
     }

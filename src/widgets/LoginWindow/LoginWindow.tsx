@@ -1,13 +1,13 @@
 import cn from "classnames";
-import styles from "./RegisterUser.module.scss";
-import {RegisterForm} from "../../features";
+import styles from "./LoginWindow.module.scss";
+import {LoginForm} from "../../features";
 
-function RegisterUser(){
+function LoginWindow(){
     return (
         <div className={cn(styles["sign-in-window"])}>
             <h2 className={cn(styles["title"])}>Sign In to Budget Flow</h2>
-            <RegisterForm/>
+            <LoginForm/>
         </div>
     )
 }
-export default RegisterUser;
+export default LoginWindow;

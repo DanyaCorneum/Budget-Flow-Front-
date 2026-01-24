@@ -1,0 +1,17 @@
+.goal-card {
+  display: flex;
+  flex-direction: column;
+  max-height: 20rem;
+  max-width: 15rem;
+  border-radius: 10px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 20px 15px;
+
+  h3, h2 {
+    margin: 0;
+  }
+
+  .goal-card__container {
+  }
+}

@@ -11,7 +11,10 @@ function PlansCard(props: PlanCardProps) {
         <Card title={amountText} className={cn(styles["plans-card"])}>
             <div className={cn(styles["plans-card__container"])}>
                 <p>{props.description}</p>
-                <div className={cn(styles["progress-bar"])}></div>
+                <div className={cn(styles["progress-bar"], {
+                    [styles["blue"]]: props.color === "blue",
+                    [styles["orange"]]: props.color === "orange",
+                })} ></div>
             </div>
         </Card>
     )

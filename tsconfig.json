@@ -3,5 +3,14 @@
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
-  ]
+  ],
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "jsx": "react-jsx", // This is the key line
+    "moduleResolution": "node",
+    "allowJs": true,
+    "types": ["node", "jest", "@testing-library/jest-dom"],
+    "strict": true
+  }
 }

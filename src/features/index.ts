@@ -1,2 +1,2 @@
-export {default as changeTheme} from "./theme/changeTheme.ts"
-export {default as RegisterForm} from "./register-user/RegisterForm.tsx"
+export {default as changeTheme} from "./theme/lib/changeTheme.ts"
+export {default as LoginForm} from "./login/ui/LoginForm.tsx"

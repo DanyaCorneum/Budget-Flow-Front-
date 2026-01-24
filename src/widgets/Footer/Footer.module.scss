@@ -2,9 +2,27 @@
 
 .footer {
   display: flex;
-  justify-content:center;
+  justify-content: flex-start;
   align-items: center;
-  background: $text-color-main;
+  background: #292929;
   color: $text-color-secondary;
   padding: 1.5rem 2.5rem;
+
+  .main-part {
+   display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap:  2rem;
+    .icon{
+      max-width: 50px;
+    }
+    .links{
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      a {
+        color: #66A3FF;
+      }
+    }
+  }
 }

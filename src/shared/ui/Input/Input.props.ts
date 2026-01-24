@@ -1,9 +1,12 @@
-import  {type HTMLAttributes} from "react";
+import {type ChangeEvent, type HTMLAttributes} from "react";
 
 export interface InputProps extends HTMLAttributes<HTMLInputElement> {
     isValid: boolean;
     className?: string;
     placeholder?: string;
-    handleData?: (event: React.ChangeEvent<HTMLInputElement>) => boolean;
-    type?: string
+    type?: string,
+    onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+    onClear?: () => void;
+    clearable?: boolean;
+    value?: string;
 }

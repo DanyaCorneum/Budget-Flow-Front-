@@ -1,10 +1,28 @@
 import styles from "./Footer.module.scss"
 import cn from "classnames";
+import {default as Tbank} from "../../assets/tbank.svg"
 
-function Footer(){
+
+function Footer() {
     return (
         <div className={cn(styles['footer'])}>
-            Footer
+            <div className={cn(styles["main-part"])}>
+                <img className={cn(styles["icon"])} src={Tbank} alt={"tbank"}></img>
+                <div className={cn(styles["links"])}>
+                    <a href={"/"}>О Т-Банке</a>
+                    <a href={"/"}>Новости</a>
+                    <a href={"/"}>Блог</a>
+                    <a href={"/"}>Работа</a>
+                    <a href={"/"}>Точки пополнения</a>
+                    <a href={"/"}>Банкоматы</a>
+                    <a href={"/"}>Курсы валют</a>
+                    <a href={"/"}>Контакты</a>
+                    <a href={"/"}>Помощь</a>
+                    <a href={"/"}>Безопасность</a>
+                    <a href={"/"}>Для инвесторов</a>
+                </div>
+            </div>
+            <div className={cn(styles['number'])}></div>
         </div>
     )
 }
