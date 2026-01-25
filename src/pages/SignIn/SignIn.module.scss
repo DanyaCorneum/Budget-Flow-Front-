@@ -4,11 +4,11 @@
   background-color: variables.$secondary-color;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  //justify-content: space-between;
   align-items: center;
-  height: 100hv;
-  padding: 30px 30px 170px;
-  gap: 10rem;
+  height: 100vh;
+  padding: 30px 30px 200px;
+  gap: 35%;
 
   .header {
     display: flex;

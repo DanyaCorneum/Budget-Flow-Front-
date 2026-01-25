@@ -11,7 +11,7 @@ function Home() {
         <PlansCard color={"blue"} getAmount={getAmountIncome} description={"Доходы"}/>
         <PlansCard color={"orange"} getAmount={getAmountExpenses} description={"Расходы"}/>
         <AddGoal/>
-        <GoalCard/>
+        <GoalCard progress={10} priority={4}/>
         <Footer/>
     </div>
 }
