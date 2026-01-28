@@ -15,7 +15,7 @@ function NavigationBar() {
                     <img src={Tbank} alt={"tbank"}></img>
                     <Link className={cn(styles["nav-link"])} to={"/"}>Главная</Link>
                     <Link className={cn(styles["nav-link"])} to={"/about"}>История</Link>
-                    <Link className={cn(styles["nav-link"])} to={"/other"}>Бонусы</Link>
+                    <Link className={cn(styles["nav-link"])} to={"/other"}>О нас</Link>
                 </div>
                 <div className={cn(styles["sign-in"])}>
                     <Link className={cn(styles["nav-link"], styles["profile"])} to={"/sign-in"}>Войти <img src={User} alt={"user"}/></Link>

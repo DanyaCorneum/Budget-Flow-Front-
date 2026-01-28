@@ -1,14 +1,13 @@
-@use "../../../../../src/shared/styles/mixins" as *;
-
-
+@use "../../../../../src/shared/styles/variables" as *;
 
 .goal-add{
-  @include modalWindow();
   .goal-add__container{
     position: relative;
     width: 25%;
     height: 25%;
     background-color: white;
     z-index: 20;
+    border-radius:$border-radius;
+    padding: $padding;
   }
 }

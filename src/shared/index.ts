@@ -8,4 +8,3 @@ export {default as Card} from "./ui/Card/Card.tsx";
 export {default as useModal} from "./lib/hooks/useModal.ts"
 
 // types
-export {type BaseModalProps} from "./types/ModalProps.ts"

@@ -1,3 +1,4 @@
+@use '../../../../../src/shared/styles/variables.scss' as *;
 
 .hide{
   display: none;
@@ -15,7 +16,7 @@
   border-radius: 10px;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 20px 15px;
+  padding: $padding;
   gap:10px;
   transition: all 0.3s ease;
   cursor: pointer;
