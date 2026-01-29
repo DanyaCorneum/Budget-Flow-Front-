@@ -1,8 +1,16 @@
 import cn from "classnames";
 import styles from "./LoginForm.module.scss";
 import { Button, Input } from "../../../shared";
-import { handleNumbers } from "../../../shared/lib";
-import { type Dispatch, type FormEvent, type SetStateAction, useRef, useState } from "react";
+import  handleNumbers  from "../../../shared/lib/utils/handleNumbers.ts"
+import {
+    type ChangeEvent,
+    type Dispatch,
+    type FormEvent,
+    type RefObject,
+    type SetStateAction,
+    useRef,
+    useState
+} from "react";
 import { useNavigate } from "react-router-dom";
 import { default as Arrow } from "../../../assets/arrow.svg";
 
@@ -30,7 +38,7 @@ function LoginForm() {
 
     // Обработчик изменения
     const handleChange = (
-        e: React.ChangeEvent<HTMLInputElement>,
+        e: ChangeEvent<HTMLInputElement>,
         handler: Dispatch<SetStateAction<string>>
     ) => {
         if (handler === setNumber && handleNumbers) {
@@ -45,7 +53,7 @@ function LoginForm() {
     // ✅ Исправлено: правильный тип для inputRef
     const handleClear = (
         handler: Dispatch<SetStateAction<string>>,
-        inputRef: React.RefObject<HTMLInputElement | null> // ✅ Изменено
+        inputRef: RefObject<HTMLInputElement | null> // ✅ Изменено
     ) => {
         handler(""); // Очищаем значение
         inputRef.current?.focus(); // Возвращаем фокус (используем optional chaining)

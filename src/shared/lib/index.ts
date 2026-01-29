@@ -1,1 +1,1 @@
-export {default as handleNumbers} from "../../features/login/lib/validation.ts"
+export {default as handleNumbers} from "./utils/handleNumbers.ts"

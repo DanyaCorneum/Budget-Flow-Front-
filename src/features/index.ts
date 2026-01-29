@@ -1,3 +1,5 @@
 export {default as changeTheme} from "./theme/lib/changeTheme.ts"
 export {default as LoginForm} from "./login/ui/LoginForm.tsx"
 export {default as BankMiniCard} from "./bank-account/ui/BankMiniCard/BankMiniCard.tsx"
+export {default as AddGoal} from "./goal-manage/ui/AddGoal/AddGoal.tsx"
+export {default as GoalCard} from "./goal-manage/ui/GoalCard/GoalCard.tsx"

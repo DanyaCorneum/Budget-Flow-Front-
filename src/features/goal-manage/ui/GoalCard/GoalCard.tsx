@@ -3,6 +3,7 @@ import styles from "./GoalCard.module.scss"
 import cn from "classnames";
 import type {GoalCardProps} from "./GoalCard.props.ts";
 import GoalEditModal from "../GoalEditModal/GoalEditModal.tsx";
+
 function GoalCard({name, goal, progress, priority = 1}: GoalCardProps) {
     const {isOpen, open, close} = useModal()
 

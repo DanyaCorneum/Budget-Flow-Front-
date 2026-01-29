@@ -1,17 +1,15 @@
 import styles from "./Home.module.scss"
-import {AddGoal, Footer, GoalCard} from "../../widgets";
-import BankMiniCard from "../../features/bank-account/ui/BankMiniCard/BankMiniCard.tsx";
-import {PlansCard} from "../../widgets";
-import {getAmountIncome} from "../../entities/user/api/getAmountIncome.ts";
-import {getAmountExpenses} from "../../entities/user/api/getAmountExpenses.ts";
+import {Footer, GoalSlider} from "../../widgets";
+import type {GoalProps} from "../../features/goal-manage/model/types.ts";
+import {AddGoal} from "../../features";
+import {useState} from "react";
 
 function Home() {
+    const [goals, setGoals] = useState<GoalProps[]>([{name: "lol", priority: "1", goal: "123", id: "2"}])
+
     return <div className={styles["home"]}>
-        <BankMiniCard/>
-        <PlansCard color={"blue"} getAmount={getAmountIncome} description={"Доходы"}/>
-        <PlansCard color={"orange"} getAmount={getAmountExpenses} description={"Расходы"}/>
-        <AddGoal/>
-        <GoalCard name={"отпуск"} goal={100000} progress={10} priority={4}/>
+        <AddGoal goals={goals} onNewGoal={setGoals}/>
+        <GoalSlider goalList={goals}/>
         <Footer/>
     </div>
 }

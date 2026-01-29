@@ -1,12 +1,11 @@
 import cn from "classnames";
 import styles from "./GoalEditModal.module.scss";
-import type {BaseModalProps} from "../../../../shared";
 
-// interface GoalEditModalProps {
-//     close?: () => void
-// }
+interface GoalEditModalProps {
+    close?: () => void
+}
 
-function GoalEditModal({ close }: BaseModalProps) {
+function GoalEditModal({ close }: GoalEditModalProps) {
     return (
         <div onClick={close} className={cn(styles["goal-edit"])}>
             <div className={styles["goal-card__container"]} onClick={(e)=> { e.stopPropagation()}}>

@@ -4,10 +4,15 @@
   .goal-add__container{
     position: relative;
     width: 25%;
-    height: 25%;
+    min-height: 25%;
     background-color: white;
     z-index: 20;
     border-radius:$border-radius;
     padding: $padding;
+    .goal-add__form{
+      display:flex;
+      flex-direction: column;
+      gap:  $padding;
+    }
   }
 }
