@@ -5,7 +5,7 @@ import {AddGoal} from "../../features";
 import {useState} from "react";
 
 function Home() {
-    const [goals, setGoals] = useState<GoalProps[]>([{name: "lol", priority: "1", goal: "123", id: "2"}])
+    const [goals, setGoals] = useState<GoalProps[]>([{name: "not lol", priority: "1", goal: "123", id: "2"}])
 
     return <div className={styles["home"]}>
         <AddGoal goals={goals} onNewGoal={setGoals}/>
