@@ -30,6 +30,14 @@
   }
 }
 
+.input[type='date']{
+  font-family: "Tinkof Sans", sans-serif;
+  display: flex;
+  font-size: 15px;
+  text-align: left;
+  padding: 18px 18px;
+}
+
 .input-label {
   position: absolute;
   left: 18px;
@@ -59,7 +67,6 @@
   }
 }
 
-/* Скрываем placeholder при фокусе */
 .input:focus::placeholder {
   opacity: 0;
 }

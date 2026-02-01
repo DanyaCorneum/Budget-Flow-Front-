@@ -6,5 +6,6 @@ export {default as Card} from "./ui/Card/Card.tsx";
 
 //hooks
 export {default as useModal} from "./lib/hooks/useModal.ts"
+export {default as useFormValidation} from "./lib/hooks/useFormValidation.ts"
 
 // types

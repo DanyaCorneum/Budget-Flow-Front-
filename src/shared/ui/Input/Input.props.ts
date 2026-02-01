@@ -8,5 +8,5 @@ export interface InputProps extends HTMLAttributes<HTMLInputElement> {
     onChange: (event: ChangeEvent<HTMLInputElement>) => void;
     onClear?: () => void;
     clearable?: boolean;
-    value?: string;
+    value?: string | Date | null;
 }

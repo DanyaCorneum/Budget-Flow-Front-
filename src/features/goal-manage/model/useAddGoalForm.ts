@@ -7,10 +7,11 @@ export function useAddGoalForm() {
         name: "",
         goal: "",
         priority: "",
+        date: null,
         id: ""
     });
 
-    const updateForm = (field: keyof typeof form, value: string) => {
+    const updateForm = (field: keyof typeof form, value: string | null | Date) => {
         setForm(perv => ({...perv, [field]: value}))
     }
 
