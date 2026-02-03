@@ -1,7 +1,9 @@
 @use "../../../../../src/shared/styles/mixins" as *;
 
-
 .goal-edit{
+  position: absolute;
+  top: 0;
+  left: 0;
   .goal-card__container{
     position: relative;
     width: 25%;

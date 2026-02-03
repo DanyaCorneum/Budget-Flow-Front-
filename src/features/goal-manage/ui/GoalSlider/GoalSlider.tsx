@@ -1,52 +1,53 @@
 import styles from "./Goalslider.module.scss"
 import {GoalCard} from "../../../index.ts";
-import type {GoalProps} from "../../model/types.ts";
 import {Button} from "../../../../shared";
-import {useRef, useState} from "react";
+import { useState} from "react";
+import {type RootState} from "../../../../app/providers/store/store.ts"
+import {useSelector} from "react-redux";
 
-interface GoalSliderProps {
-    goalList: GoalProps[]
-}
 
-function GoalSlider({goalList}: GoalSliderProps) {
-    const [step, setStep] = useState<number>(0);
-    const containerRef = useRef<HTMLDivElement>(null);
+function GoalSlider() {
+
+    // TODO: переделать потом логику
+    const goalList = useSelector((state: RootState) => state.goalList.goalList);
+    const VISIBLE_COUNT = 6;
+    const [currentIndex, setCurrentIndex] = useState<number>(0);
+    const maxIndex = Math.max(0, goalList.length - VISIBLE_COUNT);
 
     const moveLeft = () => {
-        if ((goalList.length < 5)) return;
-        if(containerRef.current && step < goalList.length-5) {
-            setStep(step+1)
+        if (!(currentIndex >= maxIndex)) {
+            setCurrentIndex((prev) => Math.min(prev + 1, maxIndex));
         }
-        console.log("left", step, goalList.length *  5)
     }
     const moveRight = () => {
-        if ((goalList.length < 5)) return;
-        if (containerRef.current && step > 0) {
-            setStep(step-1)
-        }
-        console.log(goalList.length)
-
+            setCurrentIndex((prev) => Math.max(prev - 1, 0));
     }
 
+    const offset = currentIndex * 220;
 
     return (
         <div className={styles["goal-slider"]}>
-            <Button onClick={moveRight} className={styles["arrow"]}>
-                <i className={"bi bi-arrow-left-short"}/>
-            </Button>
-            <div ref={containerRef} className={styles["goal-slider__container"]}>
-                <div className={styles["goal-slider__elements"]} style={{transform: `translateX(${-step * 10}%)`}}>
-                    {goalList.map((goal) => {
+            {goalList.length > 6 &&
+                < Button onClick={moveRight} className={styles["arrow"]}>
+                    <i className={"bi bi-arrow-left-short"}/>
+                </Button>
+            }
+            <div className={styles["goal-slider__container"]}>
+                <div className={styles["goal-slider__elements"]} style={{transform: `translateX(-${offset}px)`}}>
+                    {goalList.length > 0 ? goalList.map((goal) => {
                         return (
                             <GoalCard date={goal.date} progress={1} key={goal.id} name={goal.name}
                                       goal={goal.goal}/>
                         )
-                    })}
+                    }) : <p style={{color: "gray"}}>Добавьте новую цель</p>}
                 </div>
             </div>
-            <Button onClick={moveLeft} className={styles["arrow"]}>
-                <i className="bi bi-arrow-right-short"/>
-            </Button>
+            {
+                goalList.length > 6 &&
+                <Button onClick={moveLeft} className={styles["arrow"]}>
+                    <i className="bi bi-arrow-right-short"/>
+                </Button>
+            }
         </div>
     )
 }

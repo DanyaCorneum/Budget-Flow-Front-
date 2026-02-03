@@ -3,23 +3,24 @@ import ModalWindow from "../../../../shared/ui/ModalWindow/ModalWindow.tsx";
 import {Button, Input, useFormValidation} from "../../../../shared";
 import {type ChangeEvent, useEffect} from "react";
 import {useAddGoalForm} from "../../model/hooks/useAddGoalForm.ts";
-import {useGoalList} from "../../model/hooks/useGoalList.ts";
-import type {GoalProps} from "../../model/types.ts";
 import {handleField} from "../../model/utils/handleField.ts";
+import {useDispatch, useSelector} from "react-redux";
+import type {AppDispatch, RootState} from "../../../../app/providers/store/store.ts";
+import {goalListActions} from "../../../../app/providers/store/slice/goalsList.slice.ts";
+import {createPortal} from "react-dom";
 
 export interface AddGoalModalProps {
     close: () => void;
-    goals: Array<GoalProps>;
-    onNew: any;
 }
 
 const INITIAL_VALUE_VALID = {
     name: true, goal: true, date: true, id: true
 }
 
-function AddGoalModal({close, goals, onNew}: AddGoalModalProps) {
+function AddGoalModal({close}: AddGoalModalProps) {
     const {form, updateForm, clearForm} = useAddGoalForm()
-    const {goalList, addGoal} = useGoalList(goals);
+    const goalList = useSelector((state: RootState) => state.goalList.goalList);
+    const dispatch = useDispatch<AppDispatch>();
     const {
         validation,
         validateField,
@@ -61,9 +62,12 @@ function AddGoalModal({close, goals, onNew}: AddGoalModalProps) {
             validateField("date", "")
             formValid = false;
         }
-        if (formValid) {
-            addGoal({...form, id: Date.now().toString()})
-            onNew([...goalList, form])
+        if (formValid && goalList.length < 10) {
+            dispatch(goalListActions.addGoal({...form, id: 1}))
+            close()
+        }
+        if(goalList.length > 10){
+            alert("to many goals")
         }
     }
 
@@ -76,7 +80,7 @@ function AddGoalModal({close, goals, onNew}: AddGoalModalProps) {
         return () => clearTimeout(timeOutId)
     }, [validation, clearValidation]);
 
-    return (
+    const modalContent = (
         <ModalWindow close={close} className={styles["goal-add"]}>
             <div className={styles["goal-add__container"]} onClick={(e) => {
                 e.stopPropagation()
@@ -87,7 +91,8 @@ function AddGoalModal({close, goals, onNew}: AddGoalModalProps) {
                           event.preventDefault()
                           addNewGoal()
                       }}>
-                    <Input placeholder={"Цель"} onChange={handleChange("name")} isValid={validation.name} value={form.name}
+                    <Input placeholder={"Цель"} onChange={handleChange("name")} isValid={validation.name}
+                           value={form.name}
                            clearable={true}
                            onClear={onNameClear}
                     />
@@ -105,6 +110,9 @@ function AddGoalModal({close, goals, onNew}: AddGoalModalProps) {
                 </form>
             </div>
         </ModalWindow>
+    )
+    return (
+        createPortal(modalContent, document.body)
     )
 }
 

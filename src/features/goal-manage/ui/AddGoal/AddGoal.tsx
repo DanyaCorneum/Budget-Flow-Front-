@@ -1,15 +1,9 @@
 import styles from "./AddGoal.module.scss"
 import {Button, useModal} from "../../../../shared";
 import AddGoalModal from "../AddGoalModal/AddGoalModal.tsx";
-import type {GoalProps} from "../../model/types.ts";
 import {useEffect} from "react";
 
-interface AddGoalProps {
-    goals: GoalProps[]
-    onNewGoal?: () => void;
-}
-
-function AddGoal({goals, onNewGoal} : AddGoalProps) {
+function AddGoal() {
     const {isOpen, open, close} = useModal()
 
     const clickHandler = () => {
@@ -17,9 +11,9 @@ function AddGoal({goals, onNewGoal} : AddGoalProps) {
     }
     useEffect(() => {
         close()
-    }, [close, goals])
+    }, [close])
     return (<>
-            {isOpen && <AddGoalModal goals={goals} onNew={onNewGoal} close={close}/>}
+            {isOpen && <AddGoalModal close={close}/>}
             <Button className={styles["add-goal"]} onClick={clickHandler}>
                 +
             </Button>
