@@ -1,7 +1,5 @@
 import styles from "./GoalEditModal.module.scss";
 import ModalWindow from "../../../../shared/ui/ModalWindow/ModalWindow.tsx";
-import {Input} from "../../../../shared";
-
 interface GoalEditModalProps {
     close: () => void
 }
@@ -12,7 +10,6 @@ function GoalEditModal({close}: GoalEditModalProps) {
             <div className={styles["goal-card__container"]} onClick={(e) => {
                 e.stopPropagation()}}>
                 <form>
-                    <Input placeholder={"Имя"}/>
                 </form>
             </div>
         </ModalWindow>

@@ -1,12 +1,11 @@
 import { useState} from "react";
-import type {GoalProps} from "./types.ts";
+import type {GoalProps} from "../types.ts";
 
 
 export function useAddGoalForm() {
     const [form, setForm] = useState<GoalProps>({
         name: "",
         goal: "",
-        priority: "",
         date: null,
         id: ""
     });

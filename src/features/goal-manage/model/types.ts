@@ -1,7 +1,6 @@
 export interface GoalProps {
-    name:string,
-    goal:string,
-    priority:string,
+    name: string,
+    goal: string,
     date: Date | null,
-    id:string
+    id?: string
 }

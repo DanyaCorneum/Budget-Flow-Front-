@@ -1,4 +1,4 @@
-import type {GoalProps} from "./types.ts";
+import type {GoalProps} from "../types.ts";
 import {useState} from "react";
 
 export function useGoalList(list: Array<GoalProps>)  {
