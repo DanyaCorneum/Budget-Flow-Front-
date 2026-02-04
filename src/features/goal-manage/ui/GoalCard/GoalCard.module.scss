@@ -1,10 +1,10 @@
 @use '../../../../../src/shared/styles/variables.scss' as *;
 
-.hide{
+.hide {
   display: none;
 }
 
-.modal-open{
+.modal-open {
   overflow-y: hidden;
 }
 
@@ -12,14 +12,15 @@
   display: flex;
   flex-direction: column;
   max-height: 25rem;
-  width: 200px;
+  min-width: 20rem;
   border-radius: 10px;
   justify-content: flex-start;
   align-items: flex-start;
   padding: $padding;
-  gap:10px;
+  gap: 10px;
   transition: all 0.3s ease;
   cursor: pointer;
+  animation: fadein 500ms ease-in-out forwards;
 
   &:hover {
     transform: scale(1.02);
@@ -32,12 +33,14 @@
   h3, h2 {
     margin: 0;
   }
-  .priority{
-    display:  flex;
+
+  .priority {
+    display: flex;
 
     gap: 0.5rem;
   }
-  .progress{
+
+  .progress {
     $height-p: 1.1rem;
     user-select: none;
     position: relative;
@@ -46,27 +49,29 @@
     height: 1.1rem;
     border-radius: 10px;
     overflow: hidden;
-    &::before{
+
+    &::before {
       z-index: -1;
       position: absolute;
       content: "";
       top: 0;
       left: 0;
       display: block;
-      width:  100%;
+      width: 100%;
       height: $height-p;
       border-radius: 10px;
       background-color: #eae9e9;
 
     }
-    &::after{
+
+    &::after {
       z-index: -1;
       position: absolute;
       content: "";
       top: 0;
       left: 0;
       display: block;
-      width:  var(--progress-width, 0%);
+      width: var(--progress-width, 0%);
       height: $height-p;
       border-radius: 10px;
       background-color: #4FC5DF;
@@ -75,5 +80,16 @@
   }
 
   .goal-card__container {
+  }
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

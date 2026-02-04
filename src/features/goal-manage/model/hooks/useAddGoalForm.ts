@@ -1,13 +1,13 @@
-import { useState} from "react";
+import { useState } from "react";
 import type {GoalProps} from "../types.ts";
 
 
-export function useAddGoalForm() {
+export function useAddGoalForm(props: GoalProps = {name: "", goal: "", date: null, id: ""}) {
     const [form, setForm] = useState<GoalProps>({
-        name: "",
-        goal: "",
-        date: null,
-        id: ""
+        name: props.name,
+        goal: props.goal,
+        date: props.date,
+        id: props.id
     });
 
     const updateForm = (field: keyof typeof form, value: string | null | Date) => {

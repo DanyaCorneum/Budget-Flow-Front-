@@ -7,13 +7,15 @@ import type {HTMLAttributes} from "react";
 
 export interface GoalCardProps extends GoalProps, HTMLAttributes<HTMLDivElement> {
     progress: number;
+    id: string;
+    name: string;
 }
 
-function GoalCard({name, goal, progress, date, ...props}: GoalCardProps) {
+function GoalCard({name, goal, progress, date, id, ...props}: GoalCardProps) {
     const {isOpen, open, close} = useModal()
     return (
         <>
-            {isOpen && <GoalEditModal close={close}/>}
+            {isOpen && <GoalEditModal name={name} goal={goal} date={date} id={id} close={close}/>}
             <Card className={cn(styles["goal-card"])} onClick={open} {...props}>
                 <h2>{goal} ₽</h2>
                 <div className={cn(styles["goal-card__container"])}>

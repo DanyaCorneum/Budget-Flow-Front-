@@ -1,55 +1,72 @@
 import styles from "./Goalslider.module.scss"
 import {GoalCard} from "../../../index.ts";
 import {Button} from "../../../../shared";
-import { useState} from "react";
+import {useState} from "react";
 import {type RootState} from "../../../../app/providers/store/store.ts"
 import {useSelector} from "react-redux";
+import cn from "classnames";
 
 
 function GoalSlider() {
-
-    // TODO: переделать потом логику
     const goalList = useSelector((state: RootState) => state.goalList.goalList);
-    const VISIBLE_COUNT = 6;
     const [currentIndex, setCurrentIndex] = useState<number>(0);
-    const maxIndex = Math.max(0, goalList.length - VISIBLE_COUNT);
 
-    const moveLeft = () => {
-        if (!(currentIndex >= maxIndex)) {
-            setCurrentIndex((prev) => Math.min(prev + 1, maxIndex));
+    const VISIBLE_COUNT = 4;
+
+    const moveNext = () => {
+        if (currentIndex + VISIBLE_COUNT < goalList.length) {
+            setCurrentIndex(prev => prev + 1);
         }
     }
-    const moveRight = () => {
-            setCurrentIndex((prev) => Math.max(prev - 1, 0));
-    }
 
-    const offset = currentIndex * 220;
+    const movePrev = () => {
+        if (currentIndex > 0) {
+            setCurrentIndex(prev => prev - 1);
+        }
+    }
 
     return (
         <div className={styles["goal-slider"]}>
-            {goalList.length > 6 &&
-                < Button onClick={moveRight} className={styles["arrow"]}>
-                    <i className={"bi bi-arrow-left-short"}/>
-                </Button>
-            }
+            <Button onClick={movePrev} className={cn(styles["arrow"], {
+                [styles["arrow-inactive"]] : (currentIndex === 0),
+            })}>
+                <i className="bi bi-arrow-left-short"/>
+            </Button>
             <div className={styles["goal-slider__container"]}>
-                <div className={styles["goal-slider__elements"]} style={{transform: `translateX(-${offset}px)`}}>
-                    {goalList.length > 0 ? goalList.map((goal) => {
-                        return (
-                            <GoalCard date={goal.date} progress={1} key={goal.id} name={goal.name}
-                                      goal={goal.goal}/>
-                        )
-                    }) : <p style={{color: "gray"}}>Добавьте новую цель</p>}
+                <div className={styles["goal-slider__elements"]}>
+                    {goalList.length > 0 ? (
+                        goalList.map((goal, index) => {
+                            // Логика видимости:
+                            // Карточка видна, если её индекс >= текущего
+                            // И меньше, чем текущий + количество видимых
+                            const isVisible = index >= currentIndex && index < currentIndex + VISIBLE_COUNT;
+
+                            if (!isVisible) return null; // Или можно возвращать <div style={{display: 'none'}} />
+
+                            return (
+                                <GoalCard
+                                    key={goal.id}
+                                    id={goal.id}
+                                    date={goal.date}
+                                    progress={1}
+                                    name={goal.name}
+                                    goal={goal.goal}
+                                />
+                            );
+                        })
+                    ) : (
+                        <p style={{color: "gray"}}>Добавьте новую цель</p>
+                    )}
                 </div>
             </div>
-            {
-                goalList.length > 6 &&
-                <Button onClick={moveLeft} className={styles["arrow"]}>
-                    <i className="bi bi-arrow-right-short"/>
-                </Button>
-            }
+            <Button onClick={moveNext} className={cn(styles["arrow"], {
+                 [styles["arrow-inactive"]] : !(currentIndex + VISIBLE_COUNT < goalList.length),
+            })}>
+                <i className="bi bi-arrow-right-short"/>
+            </Button>
+
         </div>
-    )
+    );
 }
 
 export default GoalSlider;

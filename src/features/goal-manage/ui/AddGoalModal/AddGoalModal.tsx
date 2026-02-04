@@ -63,7 +63,7 @@ function AddGoalModal({close}: AddGoalModalProps) {
             formValid = false;
         }
         if (formValid && goalList.length < 10) {
-            dispatch(goalListActions.addGoal({...form, id: 1}))
+            dispatch(goalListActions.addGoal({...form, id: (Math.random()*100).toString()}))
             close()
         }
         if(goalList.length > 10){

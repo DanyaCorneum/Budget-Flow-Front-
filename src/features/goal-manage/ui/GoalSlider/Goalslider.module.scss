@@ -6,6 +6,9 @@
   align-items: center;
   gap: 1rem;
   padding:  1rem;
+  .arrow-inactive {
+    opacity: 0.4;
+  }
   .arrow {
     box-sizing: border-box;
     $size: 50px;
@@ -27,14 +30,14 @@
     width: 95%;
     display: flex;
     margin: 0 auto;
-    overflow-x: hidden;
+    overflow: hidden;
     padding: 20px;
 
     .goal-slider__elements {
       max-width: 200%;
       transition: 500ms ease-in-out;
       display: flex;
-      gap: 20px
+      gap: 1rem
     }
   }
 }

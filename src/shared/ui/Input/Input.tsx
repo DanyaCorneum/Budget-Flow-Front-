@@ -28,7 +28,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             }
         }
 
-        const handleClear = (e: MouseEvent) => {
+        const handleClear = (e: React.MouseEvent<HTMLButtonElement>) => {
             e.preventDefault();
             onClear?.();
         }
@@ -44,7 +44,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
                     className={cn(styles["input"], {
                         [styles["invalid"]]: !isValid
                     })}
-                    value={value ?? ""}
+                    value={value ? value.toString() : ""}
                     onChange={onChange}
                 />{
                 placeholder &&
