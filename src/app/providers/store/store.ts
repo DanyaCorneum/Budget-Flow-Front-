@@ -1,9 +1,11 @@
 import {configureStore} from "@reduxjs/toolkit";
 import GoalsListSlice from "./slice/goalsList.slice.ts";
+import userSlice from "./slice/user.slice.ts";
 
 export const store = configureStore({
     reducer: {
-        goalList: GoalsListSlice
+        goalList: GoalsListSlice,
+        user: userSlice
     },
 
 })

@@ -2,7 +2,7 @@ import styles from "./AddGoalModal.module.scss";
 import ModalWindow from "../../../../shared/ui/ModalWindow/ModalWindow.tsx";
 import {Button, Input, useFormValidation} from "../../../../shared";
 import {type ChangeEvent, useEffect} from "react";
-import {useAddGoalForm} from "../../model/hooks/useAddGoalForm.ts";
+import {useGoalForm} from "../../model/hooks/useGoalForm.ts";
 import {handleField} from "../../model/utils/handleField.ts";
 import {useDispatch, useSelector} from "react-redux";
 import type {AppDispatch, RootState} from "../../../../app/providers/store/store.ts";
@@ -18,7 +18,7 @@ const INITIAL_VALUE_VALID = {
 }
 
 function AddGoalModal({close}: AddGoalModalProps) {
-    const {form, updateForm, clearForm} = useAddGoalForm()
+    const {form, updateForm, clearForm} = useGoalForm()
     const goalList = useSelector((state: RootState) => state.goalList.goalList);
     const dispatch = useDispatch<AppDispatch>();
     const {

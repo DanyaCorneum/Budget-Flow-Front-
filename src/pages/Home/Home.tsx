@@ -1,11 +1,9 @@
 import styles from "./Home.module.scss"
-import {Footer, GoalSlider} from "../../widgets";
-import {AddGoal} from "../../features";
+import {Footer, GoalCardManage} from "../../widgets";
 
 function Home() {
     return <div className={styles["home"]}>
-        <AddGoal/>
-        <GoalSlider/>
+        <GoalCardManage/>
         <Footer/>
     </div>
 }

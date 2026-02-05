@@ -2,7 +2,7 @@ import styles from "./GoalEditModal.module.scss";
 import ModalWindow from "../../../../shared/ui/ModalWindow/ModalWindow.tsx";
 import {createPortal} from "react-dom";
 import {Button, Input, useFormValidation} from "../../../../shared";
-import {useAddGoalForm} from "../../model/hooks/useAddGoalForm.ts";
+import {useGoalForm} from "../../model/hooks/useGoalForm.ts";
 import {useDispatch} from "react-redux";
 import type {AppDispatch} from "../../../../app/providers/store/store.ts";
 import type {ChangeEvent} from "react";
@@ -20,12 +20,13 @@ const INITIAL_VALUE_VALID = {
 
 
 function GoalEditModal({close, name, goal, date, id}: GoalEditModalProps) {
-    const {form, updateForm, clearForm} = useAddGoalForm({name, goal, date, id});
+    const {form, updateForm, clearForm} = useGoalForm({name, goal, date, id});
     const dispatch = useDispatch<AppDispatch>();
     const {
         validateField,
     } = useFormValidation<typeof INITIAL_VALUE_VALID>(INITIAL_VALUE_VALID)
 
+    // TODO: Вынести в отдельный файл
     const handleChange = (field: keyof typeof form) => {
         return (event: ChangeEvent<HTMLInputElement>) => {
             if (handleField(field, event.target.value)) {

@@ -16,18 +16,21 @@ function GoalCard({name, goal, progress, date, id, ...props}: GoalCardProps) {
     return (
         <>
             {isOpen && <GoalEditModal name={name} goal={goal} date={date} id={id} close={close}/>}
-            <Card className={cn(styles["goal-card"])} onClick={open} {...props}>
-                <h2>{goal} ₽</h2>
-                <div className={cn(styles["goal-card__container"])}>
-                    <p>{name}</p>
-                </div>
-                <div> Срок: { date ? date.toLocaleDateString("ru-RU") : "01.01.2026"}</div>
-                <div className={cn(styles["progress"])} style={{
-                    // @ts-expect-error - игнорировать проверку типов для кастомных свойств
-                    '--progress-width': `${progress}%`
-                }}>{progress.toString() + "%"}
-                </div>
-            </Card>
+            <div className={styles["goal-card__wrapper"]}>
+
+                <Card className={cn(styles["goal-card"])} onClick={open} {...props}>
+                    <h2>{goal} ₽</h2>
+                    <div className={cn(styles["goal-card__container"])}>
+                        <p>{name}</p>
+                    </div>
+                    <div> Срок: {date ? date.toLocaleDateString("ru-RU") : "01.01.2026"}</div>
+                    <div className={cn(styles["progress"])} style={{
+                        // @ts-expect-error - игнорировать проверку типов для кастомных свойств
+                        '--progress-width': `${progress}%`
+                    }}>{progress.toString() + "%"}
+                    </div>
+                </Card>
+            </div>
         </>
     )
 }
