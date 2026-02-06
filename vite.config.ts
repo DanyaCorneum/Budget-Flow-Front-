@@ -8,11 +8,6 @@ export default defineConfig({
   define: {
     __APP_VERSION__: JSON.stringify('v0.0.1'),
   },
-  esbuild: {
-    jsxFactory: 'h',
-    jsxFragment: 'Fragment',
-    jsxInject: `import React from 'react'`,
-  },
   server: {
     port: 8888,
   }
