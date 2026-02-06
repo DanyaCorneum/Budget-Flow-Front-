@@ -135,13 +135,15 @@ const PieDiagram: React.FC<PieDiagramProps> = ({ segments }) => {
         />
       </svg>
 
-      {/* Информация о сегменте */}
-      {hoveredSegmentData && (
-        <div className={styles.infoPanel}>
-          <h3>{hoveredSegmentData.label}</h3>
-          <p>{Math.round(hoveredSegmentData.percentage)}%</p>
-        </div>
-      )}
+      {/* Зарезервированное место для информации о сегменте */}
+      <div className={styles.infoPlaceholder}>
+        {hoveredSegmentData && (
+          <div className={styles.infoPanel}>
+            <h3>{hoveredSegmentData.label}</h3>
+            <p>{Math.round(hoveredSegmentData.percentage)}%</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
