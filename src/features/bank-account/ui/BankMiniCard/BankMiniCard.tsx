@@ -36,13 +36,7 @@ function BankMiniCard({
                 close={close}/>}
             <Card style={{"cursor": "pointer"}} image={image} hasImage={true} onClick={open} {...props}>
                 <div style={{"display": "flex", "alignItems": "center", "gap": "5px"}}>
-                    <div id={"dot"} style={{
-                        "width": "5px",
-                        "height": "5px",
-                        "borderRadius": "50%",
-                        "background": "black",
-                    }
-                    }></div>
+                    <span style={{'fontWeight': "bold", "fontSize":"2rem"}}>•</span>
                     {accountData.number.slice(14)}
                 </div>
             </Card>
