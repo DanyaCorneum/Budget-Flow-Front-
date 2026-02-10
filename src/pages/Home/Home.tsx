@@ -1,7 +1,7 @@
 import styles from "./Home.module.scss"
-import {ExpensCard, Footer, GoalSlider,} from "../../widgets";
+import { ExpensCard, Footer, GoalSlider,} from "../../widgets";
 import type {GoalProps} from "../../features/goal-manage/model/types.ts";
-import {AddGoal, BankMiniCard, PieDiagram} from "../../features";
+import {AddGoal, PieDiagram} from "../../features";
 import {useState} from "react";
 
 function Home() {
@@ -11,7 +11,7 @@ function Home() {
   { id: '2', percentage: 15, color: '#FFD445', label: 'Транспорт' },
   { id: '3', percentage: 15, color: '#979797', label: 'Жилье' },
   {id: '4', percentage: 60, color: '#D9D9D9', label: 'Оставшийся бюджет'}];
-  
+
   const expenseCards = [
     {
       id: '1',
@@ -33,12 +33,11 @@ function Home() {
 
   return (<><div className={styles["home"]}>
         <p className={styles.separator}>Подключенные счета</p>
-        <BankMiniCard/>
         <p className={styles.separator}>Планирование</p>
         <PieDiagram segments={segments}/>
         <div className={styles.expenseCardsContainer}>
           {expenseCards.map(card => (
-            <ExpensCard 
+            <ExpensCard
               key={card.id}
               name={card.name}
               expens_llimit={card.expens_llimit}

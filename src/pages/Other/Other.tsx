@@ -7,7 +7,7 @@ function Other() {
     { name: "Ратков Даниил Евгеньевич", role: "Frontend-developer", link:"https://github.com/DanyaCorneum" },
     { name: "Горячев Вадим Дмитриевич", role: "Backend-developer", link:"https://github.com/hate0me" },
     { name: "Сухарев Иван Владимирович", role: "Backend-developer", link:"https://vk.com/regalos" },
-    { name: "Морозов Кирилл Сергеевич", role: "DevOps", link: "https://vk.com/hm_m_k_s"},
+    { name: "Морозов Кирилл Сергеевич", role: "DevOps", link: "https://gitlab.com/podumai"},
     { name: "Кандинский Марк Кириллович", role: "Аналитик", link: "https://vk.com/kandinsky2017"}
   ];
 
