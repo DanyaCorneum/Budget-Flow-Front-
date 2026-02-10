@@ -2,5 +2,21 @@
   display: flex;
   flex-direction: column;
   gap: 4rem;
-  height: 100vh;
+  min-height: 100vh;
+  padding: 20px;
 }
+
+.separator {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0;
+  padding: 0;
+}
+
+.expenseCardsContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  width: 100%;
+  max-width: 500px; /* Ограничиваем ширину для лучшего отображения */
+  }
