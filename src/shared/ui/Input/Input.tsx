@@ -9,7 +9,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
                        className = "",
                        isValid = true,
                        type = "text",
-                       placeholder = "Placeholder",
+                       placeholder = undefined,
                        clearable = false,
                        onChange,
                        onClear,
@@ -28,7 +28,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             }
         }
 
-        const handleClear = (e: React.MouseEvent) => {
+        const handleClear = (e: React.MouseEvent<HTMLButtonElement>) => {
             e.preventDefault();
             onClear?.();
         }
@@ -44,12 +44,14 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
                     className={cn(styles["input"], {
                         [styles["invalid"]]: !isValid
                     })}
-                    value={value}
+                    value={value ? value.toString() : ""}
                     onChange={onChange}
-                />
+                />{
+                placeholder &&
                 <label htmlFor={inputId} className={styles["input-label"]}>
-                    {placeholder}
+                    {placeholder ? placeholder : null}
                 </label>
+                }
                 {clearable && value && (
                     <button
                         onClick={handleClear}

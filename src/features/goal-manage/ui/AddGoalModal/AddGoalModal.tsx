@@ -1,69 +1,86 @@
 import styles from "./AddGoalModal.module.scss";
 import ModalWindow from "../../../../shared/ui/ModalWindow/ModalWindow.tsx";
-import type {AddGoalModalProps} from "./AddGoalModal.props.tsx";
-import {Button, Input} from "../../../../shared";
-import {type ChangeEvent, useState} from "react";
-import {handleNumbers} from "../../../../shared/lib";
-import {useAddGoalForm} from "../../model/useAddGoalForm.ts";
-import {useGoalList} from "../../model/useGoalList.ts";
+import {Button, Input, useFormValidation} from "../../../../shared";
+import {type ChangeEvent, useEffect} from "react";
+import {useGoalForm} from "../../model/hooks/useGoalForm.ts";
+import {handleField} from "../../model/utils/handleField.ts";
+import {useDispatch, useSelector} from "react-redux";
+import type {AppDispatch, RootState} from "../../../../app/providers/store/store.ts";
+import {goalListActions} from "../../../../app/providers/store/slice/goalsList.slice.ts";
+import {createPortal} from "react-dom";
 
+export interface AddGoalModalProps {
+    close: () => void;
+}
 
-function AddGoalModal({close, goals, onNew}: AddGoalModalProps) {
-    const {form, updateForm, clearForm} = useAddGoalForm()
-    const {goalList, addGoal} = useGoalList(goals);
-    const [isFormValid, setFromValid] = useState({
-        name: form.name !== "", goal:  form.name !== "", priority:  form.name !== ""
-    });
+const INITIAL_VALUE_VALID = {
+    name: true, goal: true, date: true, id: true
+}
 
-    const handleNameChange = (event: ChangeEvent<HTMLInputElement>) => {
-        updateForm("name", event.target.value)
-        setFromValid(prevState =>  ({...prevState, name: event.target.value !== ""}))
-    }
-    const handleGoalChange = (event: ChangeEvent<HTMLInputElement>) => {
-        if (handleNumbers(event)) {
-            updateForm("goal", event.target.value)
-            setFromValid(prevState =>  ({...prevState, goal: event.target.value !== ""}))
+function AddGoalModal({close}: AddGoalModalProps) {
+    const {form, updateForm, clearForm} = useGoalForm()
+    const goalList = useSelector((state: RootState) => state.goalList.goalList);
+    const dispatch = useDispatch<AppDispatch>();
+    const {
+        validation,
+        validateField,
+        clearValidation
+    } = useFormValidation<typeof INITIAL_VALUE_VALID>(INITIAL_VALUE_VALID)
 
+    const handleChange = (field: keyof typeof form) => {
+        return (event: ChangeEvent<HTMLInputElement>) => {
+
+            if (handleField(field, event.target.value)) {
+                if (field !== "date") {
+                    updateForm(field, event.target.value)
+                } else {
+                    updateForm("date", event.target.valueAsDate)
+                }
+                validateField(field, event.target.value)
+            }
         }
     }
-    const handlePriorityChange = (event: ChangeEvent<HTMLInputElement>) => {
-        if (handleNumbers(event)) {
-            updateForm("priority", event.target.value)
-            setFromValid(prevState =>  ({...prevState, priority: event.target.value !== ""}))
 
-        }
-    }
     const onNameClear = () => {
         clearForm("name")
-        setFromValid(prevState =>  ({...prevState, name: false}))
     }
     const onClearGoal = () => {
         clearForm("goal")
-        setFromValid(prevState =>  ({...prevState, goal: false}))
-
     }
-    const onClearPriority = () => {
-        clearForm("priority")
-        setFromValid(prevState =>  ({...prevState, priority: false}))
 
-    }
     const addNewGoal = () => {
-        if (!isFormValid.name) {
-            setFromValid(prev => ({...prev, name: false}))
-            return
-        } else if (!isFormValid.goal) {
-            setFromValid(prev => ({...prev, goal: false}))
-            return;
-        } else if (!isFormValid.priority) {
-            setFromValid(prev => ({...prev, priority: false}))
-            return;
-        } else {
-            addGoal({...form, id: Date.now().toString()})
-            onNew([...goalList, form])
+        let formValid = true;
+        if (!validation.name || form.name === "") {
+            validateField("name", "")
+            formValid = false;
+        }
+        if (!validation.goal || form.goal === "") {
+            validateField("goal", "")
+            formValid = false;
+        }
+        if (!validation.date || form.date === null) {
+            validateField("date", "")
+            formValid = false;
+        }
+        if (formValid && goalList.length < 10) {
+            dispatch(goalListActions.addGoal({...form, id: (Math.random()*100).toString()}))
+            close()
+        }
+        if(goalList.length > 10){
+            alert("to many goals")
         }
     }
 
-    return (
+    useEffect(() => {
+        let timeOutId: number;
+        if (!validation.name || !validation.goal || !validation.date) {
+            timeOutId = setTimeout(() =>
+                clearValidation(), 2000)
+        }
+        return () => clearTimeout(timeOutId)
+    }, [validation, clearValidation]);
+
+    const modalContent = (
         <ModalWindow close={close} className={styles["goal-add"]}>
             <div className={styles["goal-add__container"]} onClick={(e) => {
                 e.stopPropagation()
@@ -74,24 +91,28 @@ function AddGoalModal({close, goals, onNew}: AddGoalModalProps) {
                           event.preventDefault()
                           addNewGoal()
                       }}>
-                    <Input placeholder={"Цель"} onChange={handleNameChange} isValid={isFormValid.name} value={form.name}
+                    <Input placeholder={"Цель"} onChange={handleChange("name")} isValid={validation.name}
+                           value={form.name}
                            clearable={true}
                            onClear={onNameClear}
                     />
-                    <Input placeholder={"Сумма"} onChange={handleGoalChange} isValid={isFormValid.goal} value={form.goal}
+                    <Input placeholder={"Сумма"} onChange={handleChange("goal")} isValid={validation.goal}
+                           value={form.goal}
                            clearable={true}
                            onClear={onClearGoal}/>
-                    <Input placeholder={"Приоритет"} onChange={handlePriorityChange} isValid={isFormValid.priority}
-                           value={form.priority}
-                           clearable={true} onClear={onClearPriority}
+                    <Input type={"date"} style={form.date ? {} : {color: "#999"}} onChange={handleChange("date")}
+                           isValid={validation.date}
+                           value={form.date?.toISOString().split('T')[0]}
                     />
                     <Button>
                         Добавить цель
                     </Button>
                 </form>
-
             </div>
         </ModalWindow>
+    )
+    return (
+        createPortal(modalContent, document.body)
     )
 }
 

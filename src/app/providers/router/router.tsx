@@ -1,9 +1,10 @@
 import {createBrowserRouter} from "react-router-dom";
 import {NavigationBar} from "../../../widgets";
-import {About, Home, Login, Other} from "../../../pages";
+import {About, Home, Other, User} from "../../../pages";
 import {lazy, Suspense} from "react";
 import {Loading} from "../../../shared";
 import Error from "../../../pages/Error/Error.tsx";
+import {RequireAuth} from "../../../features";
 
 const SignIn = lazy(() => import('../../../pages/SignIn/SignIn'))
 
@@ -11,7 +12,7 @@ export const router = createBrowserRouter(
     [
         {
             path: '/',
-            element: <NavigationBar/>,
+            element: <RequireAuth><NavigationBar/></RequireAuth>,
             children: [
                 {
                     path: "/",
@@ -22,12 +23,12 @@ export const router = createBrowserRouter(
                     element: <Other/>
                 },
                 {
-                    path: "/login",
-                    element: <Login/>
-                },
-                {
                     path: "/about",
                     element: <About/>
+                },
+                {
+                    path: "/user",
+                    element: <User/>
                 }
             ],
             errorElement: <Error/>
