@@ -5,3 +5,4 @@ export {default as AddGoal} from "./goal-manage/ui/AddGoal/AddGoal.tsx"
 export {default as GoalCard} from "./goal-manage/ui/GoalCard/GoalCard.tsx"
 export {default as PieDiagram} from "./piediagram/PieDiagram.tsx"
 export {default as RequireAuth} from './login/helpers/RequireAuth.tsx'
+export {default as Transaction} from './Transaction/Transaction.tsx'
