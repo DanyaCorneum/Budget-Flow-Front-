@@ -20,3 +20,8 @@
   width: 100%;
   max-width: 500px; /* Ограничиваем ширину для лучшего отображения */
   }
+  .PlansCardContainer{
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }

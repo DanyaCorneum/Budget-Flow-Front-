@@ -1,11 +1,9 @@
 import styles from "./Home.module.scss"
-import { ExpensCard, Footer, GoalSlider,} from "../../widgets";
-import type {GoalProps} from "../../features/goal-manage/model/types.ts";
-import {AddGoal, PieDiagram} from "../../features";
-import {useState} from "react";
+import { ExpensCard, Footer, GoalSlider, PlansCard,} from "../../widgets";
+import {AddGoal, BankMiniCard, PieDiagram} from "../../features";
+//import {useState} from "react";
 
 function Home() {
-    const [goals, setGoals] = useState<GoalProps[]>([{name: "not lol", priority: "1", goal: "123", id: "2"}])
     const segments = [
   { id: '1', percentage: 10, color: '#FF4545', label: 'Еда' },
   { id: '2', percentage: 15, color: '#FFD445', label: 'Транспорт' },
@@ -33,8 +31,13 @@ function Home() {
 
   return (<><div className={styles["home"]}>
         <p className={styles.separator}>Подключенные счета</p>
+        <BankMiniCard/>
         <p className={styles.separator}>Планирование</p>
+        <div className={styles.PlansCardContainer}>
+        <PlansCard description="e" getAmount={() => 10000} color="blue"/>
+        <PlansCard description="e" getAmount={() => 10000} color="blue"/>
         <PieDiagram segments={segments}/>
+        </div>
         <div className={styles.expenseCardsContainer}>
           {expenseCards.map(card => (
             <ExpensCard
@@ -47,8 +50,8 @@ function Home() {
             />
           ))}
         </div>
-        <p className={styles.separator}>Цели <AddGoal goals={goals} onNewGoal={setGoals}/></p>
-        <GoalSlider goalList={goals}/>
+        <p className={styles.separator}>Цели <AddGoal/></p>
+        <GoalSlider />
 
     </div>
     <Footer/></>)

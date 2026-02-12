@@ -8,7 +8,12 @@
   align-items: flex-start;
   //padding: $padding;
   gap:10px;
+  cursor:pointer;
+  transition: all 0.3s ease;
+  &:hover {
+    transform: translateY(-5px);}
 }
+
 
 
 .iconCircle {
