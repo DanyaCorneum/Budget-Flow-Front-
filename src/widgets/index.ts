@@ -1,0 +1,7 @@
+export {default as Exit} from "./Exit/Exit"
+export {default as NavigationBar} from "./NavigationBar/NavigationBar"
+export {default as Footer} from "./Footer/Footer"
+export {default as PlansCard} from "./PlansCard/PlansCard.tsx"
+export {default as RegisterUser} from "./LoginWindow/LoginWindow.tsx"
+export {default as GoalSlider} from "../features/goal-manage/ui/GoalSlider/GoalSlider.tsx"
+export {default as ExpensCard} from "./ExpensCard/ExpensCard.tsx"

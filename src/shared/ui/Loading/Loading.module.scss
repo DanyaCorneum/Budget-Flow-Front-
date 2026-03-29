@@ -1,0 +1,38 @@
+@use "../../styles/variables" as variables;
+
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20%;
+  .loading {
+    width: 100px;
+    height: 100px;
+    border: 5px solid variables.$accent-color;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    animation: 1s linear 0s normal none infinite running rot, appear 200ms ease-in-out forwards;
+  }
+}
+
+@keyframes appear {
+  0%{
+    width: 50px;
+    height: 50px;
+  }
+  100%{
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@keyframes rot {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+
+}

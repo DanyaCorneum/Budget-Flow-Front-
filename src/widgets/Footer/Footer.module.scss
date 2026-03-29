@@ -1,0 +1,81 @@
+@use "../../shared/styles/variables" as * ;
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background: #292929;
+  color: $text-color-secondary;
+  padding: 1.5rem 2.5rem;
+  gap: 1rem;
+  padding-left: 9vw;
+  padding-right: 9vw;
+
+  .main-part {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 1rem;
+
+    .icon{
+      max-width: 50px;
+    }
+    .links{
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      a {
+        color: #66A3FF;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      
+      .contacts-link {
+        font-weight: bold;
+      }
+    }
+  }
+  
+  .second-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    
+    .links-second {
+      display: flex;
+      justify-content: flex-start;
+      gap: 1.5rem;
+      a {
+        color: #66A3FF;
+        text-decoration: none;
+        
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+    
+    .number {
+      display: flexbox;
+      flex-direction: row;
+      align-items: flex-end;
+      
+      .phone-number {
+        color: white;
+        font-weight: bold;
+        font-size: 1.5em; // 1.5 times bigger than normal text
+      }
+      
+      .phone-description {
+        color: #717172;
+        margin-top: 0.25rem;
+      }
+    }
+  }
+}

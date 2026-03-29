@@ -1,0 +1,99 @@
+@use "../../styles/variables" as variables;
+
+.input-group {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+}
+
+.input {
+  background: variables.$secondary-color;
+  padding: 18px 18px 0;
+  height: 56px;
+  border: 2px solid transparent;
+  border-radius: variables.$border-radius;
+  outline: none;
+  transition: border-color 150ms ease;
+  width: 100%;
+  box-sizing: border-box;
+  &::placeholder{
+    opacity: 0;
+  }
+
+  &:focus, &:active {
+    border-color: variables.$text-color-main;
+    background-color: variables.$main-color;
+  }
+
+  &.invalid {
+    border-color: crimson;
+  }
+}
+
+.input[type='date']{
+  font-family: "Tinkof Sans", sans-serif;
+  display: flex;
+  font-size: 15px;
+  text-align: left;
+  padding: 18px 18px;
+}
+
+.input-label {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  pointer-events: none;
+  transition: all 200ms ease;
+  color: #999;
+  background: transparent;
+  padding: 0 8px 0 0;
+
+  /* Скрываем label когда placeholder виден */
+  .input:placeholder-shown + & {
+    opacity: 1;
+  }
+
+  /* Показываем и перемещаем label при фокусе или когда есть текст */
+  .input:focus + &,
+  .input:not(:placeholder-shown) + & {
+    opacity: 1;
+    visibility: visible;
+    top: 0;
+    font-size: 1rem;
+    transform: translateY(10px) ;
+    color: variables.$text-color-main;
+  }
+}
+
+.input:focus::placeholder {
+  opacity: 0;
+}
+
+.reset-button{
+  $width-height-bt: 30px;
+  $width-height-img: 15px;
+
+  background-color:transparent;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  transition: all 200ms ease;
+  border-radius:50%;
+  width: $width-height-bt;
+  height: $width-height-bt;
+  img{
+    width: $width-height-img;
+    height: $width-height-img;
+  }
+}
+
+.hide{
+  display: none;
+}

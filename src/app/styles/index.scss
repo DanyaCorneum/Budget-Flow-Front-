@@ -1,0 +1,42 @@
+@use "../../shared/styles/variables" as *;
+
+@font-face {
+  font-family: "Tinkof Sans";
+  src: url("../../../fonts/TinkoffSans-Regular.woff") format("woff");
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.modal-open{
+  overflow-y: hidden;
+}
+
+
+body {
+
+  margin: 0;
+  font-family: "Tinkof Sans", sans-serif;
+  background-color: $main-color;
+  color: $text-color-main;
+
+}
+
+button {
+  border: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}

@@ -1,0 +1,24 @@
+@use "../../shared/styles/variables" as variables;
+@use "sass:color";
+
+.exit{
+  $size-bt: 60px;
+  $size-img: 20px;
+
+  border-radius: 50%;
+  padding: 20px;
+  width: $size-bt;
+  height: $size-bt;
+  background-color: variables.$secondary-color;
+  img{
+    width: $size-img;
+    height: $size-img;
+  }
+  &:hover{
+    background-color: color.adjust(variables.$secondary-color, $blackness: 20%);
+  }
+  &:active{
+    background-color: color.adjust(variables.$secondary-color, $blackness: 40%);
+
+  }
+}

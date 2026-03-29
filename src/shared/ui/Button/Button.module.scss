@@ -1,0 +1,22 @@
+@use "../../styles/variables" as variables;
+@use "sass:color";
+
+.button {
+  color: variables.$text-color-main;
+  background: variables.$accent-color;
+  padding: 16px;
+  border-radius: variables.$border-radius;
+  font-weight: 400;
+  text-transform: capitalize;
+  transition: 200ms ease-in-out background;
+  font-size: 15px;
+
+  &:hover {
+    background: variables.$accent-color-hover
+  }
+
+  &:active {
+    background-color: variables.$accent-color-pressed
+
+  }
+}

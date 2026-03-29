@@ -1,0 +1,29 @@
+@use "../../shared/styles/variables" as variables;
+
+
+.sign-in-window {
+  background-color: variables.$main-color;
+  text-align: center;
+  padding: 60px;
+  max-width: 600px;
+  min-width: 400px;
+  border-radius: variables.$border-radius;
+  .sign-in-button{
+    padding: 0 20px;
+    img{
+      width: 10px;
+    }
+  }
+  @media screen and (max-width: 1050px) {
+    padding: 20px;
+    min-width: 500px;
+
+  }
+  @media screen and (max-width: 780px) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  @media screen and (max-width: 525px) {
+    min-width: 100px;
+  }
+}

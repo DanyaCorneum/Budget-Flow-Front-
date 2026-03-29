@@ -1,0 +1,35 @@
+@use "../../../../../src/shared/styles/mixins" as *;
+
+.goal-edit {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  .goal-card__container {
+
+      padding: 1rem;
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    border-radius: 20px;
+    position: relative;
+    min-width: 25%;
+    min-height: 25%;
+    background-color: white;
+    z-index: 20;
+  }
+}
+
+@keyframes appear {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

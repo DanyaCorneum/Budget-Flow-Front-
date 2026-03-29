@@ -1,0 +1,23 @@
+@use "../../shared/styles/variables" as variables;
+
+.sign-in {
+  background-color: variables.$secondary-color;
+  display: flex;
+  flex-direction: column;
+  //justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  padding: 30px 30px 200px;
+  gap: 35%;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  img {
+    max-height: 50px;
+  }
+
+}

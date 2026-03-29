@@ -1,0 +1,21 @@
+@use "../../styles/variables";
+@use "sass:color";
+
+.card-default{
+  $image-size: 45px;
+
+  display: flex;
+  flex-direction: row;
+  align-items:  center;
+  gap: 40%;
+  border-radius: 70px;
+  max-width: 200px;
+  max-height: 80px;
+  padding: 10px 15px;
+  box-shadow: 0 0 20px #00000050;
+  font-size: 17px;
+  img {
+    width: $image-size;
+    height: $image-size;
+  }
+}

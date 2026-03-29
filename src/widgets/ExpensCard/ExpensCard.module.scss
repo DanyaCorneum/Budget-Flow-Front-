@@ -1,0 +1,76 @@
+.expense-card {
+  display: flex;
+  flex-direction: column;
+  max-height: 20rem;
+  min-width: 15rem;
+  border-radius: 10px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  //padding: $padding;
+  gap:10px;
+  cursor:pointer;
+  transition: all 0.3s ease;
+  &:hover {
+    transform: translateY(-5px);}
+}
+
+
+
+.iconCircle {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #428BF9;
+  flex-shrink: 0;
+
+  svg {
+    width: 40px;
+    height: 40px;
+    fill: white;
+  }
+}
+
+.textSection {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  padding-bottom: 1rem;
+}
+
+.category {
+  margin: 0 0 8px 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: black;
+}
+
+.amount-info {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: black;
+}
+
+.progress-container {
+  width: 100%;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 20.25px;
+  border-radius: 10.1056px;
+  background-color: #e9ecef;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 10.1056px;
+  min-width: 8px;
+  transition: width 0.3s ease;
+}

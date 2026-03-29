@@ -1,0 +1,45 @@
+@use "../../../../shared/styles/variables" as *;
+
+.goal-slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding:  1rem;
+  height: 20rem;
+  width: 100%;
+  .arrow-inactive {
+    opacity: 0.4;
+  }
+  .arrow {
+    box-sizing: border-box;
+    $size: 50px;
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+    font-size: 30px;
+    overflow: hidden;
+    i {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      width: 20px;
+      height: 20px;
+    }
+  }
+  .goal-slider__container {
+    width: 95%;
+    display: flex;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 20px;
+
+    .goal-slider__elements {
+      max-width: 200%;
+      transition: 500ms ease-in-out;
+      display: flex;
+      gap: 1rem
+    }
+  }
+}
